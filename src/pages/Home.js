@@ -21,6 +21,11 @@ export default function Home() {
     loadUsers();
   };
 
+  const recoveryUserPWD = async (id) => {
+    await axios.get(`http://localhost:8080/userPwdRecovery/${id}`);
+    loadUsers();
+  };
+
   return (
     <div className="container">
       <div className="py-4">
@@ -61,6 +66,12 @@ export default function Home() {
                     onClick={() => deleteUser(user.id)}
                   >
                     Delete
+                  </button>
+                  <button
+                    className="btn btn-warning mx-2"
+                    onClick={() => recoveryUserPWD(user.id)}
+                  >
+                    Password Recovery
                   </button>
                 </td>
               </tr>
